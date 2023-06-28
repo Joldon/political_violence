@@ -1,27 +1,32 @@
 import React, {useRef, useEffect} from 'react'
+// import tableau from 'react-tableau'
 
 const { tableau} = window
 
 function EmbedTableau() {
     const ref = useRef(null)
-    const url = 'https://eu-west-1a.online.tableau.com/#/site/politicalviolence/views/Syriawithdiscretefilter/Syria?:iid=1'
+    // const url = 'https://eu-west-1a.online.tableau.com/#/site/politicalviolence/views/Syriawithdiscretefilter/Syria?:iid=1'
+    const url = 'https://public.tableau.com/views/Democracy_postcommunist_scores/Democracyinpostcommunistcountries2005-2022'
 
-    // function initViz() {
-    //     new tableau.Viz(ref.current, url)
-    // }
-
-    // useEffect(() => {
-    //     initViz()
-    // }, [])
+    function initViz() {
+        new tableau.Viz(ref.current, url, {
+            width: '100%',
+            height: '90vh',
+        })
+    }
+ 
     useEffect(() => {
-        const initViz = () => {
-          if (ref.current) {
-            new tableau.Viz(ref.current, url);
-          }
-        };
+        initViz()
+    }, [])
+    // useEffect(() => {
+    //     const initViz = () => {
+    //       if (ref.current) {
+    //         new tableau.Viz(ref.current, url);
+    //       }
+    //     };
     
-        initViz();
-      }, []);
+    //     initViz();
+    //   }, []);
   return (
     <div>
         <h1>EmbedTableau</h1>
@@ -32,5 +37,6 @@ function EmbedTableau() {
     </div>
   )
 }
+
 
 export default EmbedTableau
